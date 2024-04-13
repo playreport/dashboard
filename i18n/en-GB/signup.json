@@ -1,0 +1,31 @@
+{
+  "signup": {
+    "title": "Sign Up",
+    "description": "Enter your information to create an account",
+    "account": "Account",
+    "company": "Company",
+    "email": "Email",
+    "password": "Password",
+    "confirm": "Confirm Password",
+    "submit": "Sign Up",
+    "login": "Already have an account? Log in",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "next": "Next",
+    "error": {
+      "account": "Account is required",
+      "company": "Company is required",
+      "email": "Email is required",
+      "emailInvalid": "Email is invalid",
+      "password": "Password is required",
+      "passwordLength": "Password must be at least 6 characters",
+      "confirm": "Confirm Password is required",
+      "confirmMatch": "Passwords do not match"
+    },
+    "companyData": {
+      "name": "Company Name",
+      "country": "Company Country",
+      "countries": "Countries"
+    }
+  }
+}
