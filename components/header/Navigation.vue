@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { CircleUser, Menu, Package2, Search } from "lucide-vue-next";
-import LogoDark from "@/components/header/LogoDark";
-import LogoLight from "@/components/header/LogoLight";
-
+import {
+  CircleUser,
+  Globe,
+  Tv2,
+  Menu,
+  Package2,
+  Search,
+} from "lucide-vue-next";
 const colorMode = useColorMode();
+const { t, locale, setLocale } = useI18n();
 </script>
 <template>
   <header
@@ -17,29 +22,17 @@ const colorMode = useColorMode();
       <NuxtLink
         to="/"
         class="text-muted-foreground transition-colors hover:text-foreground"
-        >Dashboard</NuxtLink
+        >{{ t("menu.dashboard") }}</NuxtLink
       >
-      <!--         <a
-          href="#"
-          class="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Orders
-        </a> -->
       <NuxtLink
-        to="/products"
+        to="/projects"
         class="text-muted-foreground transition-colors hover:text-foreground"
-        >Products</NuxtLink
+        >{{ t("menu.projects") }}</NuxtLink
       >
-      <!--         <a
-          href="#"
-          class="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Customers
-        </a> -->
       <NuxtLink
         to="/settings"
         class="text-muted-foreground transition-colors hover:text-foreground"
-        >Settings</NuxtLink
+        >{{ t("menu.settings") }}</NuxtLink
       >
     </nav>
     <Sheet>
@@ -55,19 +48,21 @@ const colorMode = useColorMode();
             <Package2 class="h-6 w-6" />
             <span class="sr-only">Acme Inc</span>
           </a>
-          <a href="#" class="text-muted-foreground hover:text-foreground">
+          <a href="/" class="text-muted-foreground hover:text-foreground">
             Dashboard
           </a>
-          <a href="#" class="text-muted-foreground hover:text-foreground">
-            Orders
+          <a
+            href="/projects"
+            class="text-muted-foreground hover:text-foreground"
+          >
+            Projects
           </a>
-          <a href="#" class="text-muted-foreground hover:text-foreground">
-            Products
+          <a
+            href="/settings"
+            class="text-muted-foreground hover:text-foreground"
+          >
+            Settings
           </a>
-          <a href="#" class="text-muted-foreground hover:text-foreground">
-            Customers
-          </a>
-          <a href="#" class="hover:text-foreground"> Settings </a>
         </nav>
       </SheetContent>
     </Sheet>
@@ -84,16 +79,31 @@ const colorMode = useColorMode();
           />
         </div>
       </form>
+
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <Button variant="secondary" size="icon" class="rounded-full">
-            <CircleUser class="h-5 w-5" />
-            <span class="sr-only">Toggle user menu</span>
+            <Globe class="h-5 w-5" />
+            <span class="sr-only">Toggle Language Menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
+          <DropdownMenuItem @click="setLocale('en-GB')"> EN </DropdownMenuItem>
+          <DropdownMenuItem @click="setLocale('pt-PT')"> PT </DropdownMenuItem>
+          <DropdownMenuItem @click="setLocale('es')"> ES </DropdownMenuItem>
+          <DropdownMenuItem @click="setLocale('fr')"> FR </DropdownMenuItem>
+          <DropdownMenuItem @click="setLocale('de')"> DE </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger as-child>
+          <Button variant="secondary" size="icon" class="rounded-full">
+            <Tv2 class="h-5 w-5" />
+            <span class="sr-only">Toggle Color Mode</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
           <DropdownMenuItem @click="colorMode.preference = 'light'">
             Light
           </DropdownMenuItem>
@@ -103,7 +113,18 @@ const colorMode = useColorMode();
           <DropdownMenuItem @click="colorMode.preference = 'system'">
             System
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger as-child>
+          <Button variant="secondary" size="icon" class="rounded-full">
+            <CircleUser class="h-5 w-5" />
+            <span class="sr-only">Toggle user menu</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
