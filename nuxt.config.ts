@@ -35,33 +35,33 @@ export default defineNuxtConfig({
   },
   i18n: {
     strategy: "prefix_except_default",
-    defaultLocale: "en-GB",
+    defaultLocale: "en",
     detectBrowserLanguage: false,
     langDir: "./i18n/src/langs/",
     vueI18n: "./i18n/config",
     locales: [
       {
-        code: "en-GB",
+        code: "en",
         iso: "en-GB",
         file: "en-GB.ts",
       },
       {
-        code: "pt-PT",
+        code: "pt",
         iso: "pt-PT",
         file: "pt-PT.ts",
       },
       {
-        code: "de-DE",
+        code: "de",
         iso: "de-DE",
         file: "de-DE.ts",
       },
       {
-        code: "fr-FR",
+        code: "fr",
         iso: "fr-FR",
         file: "fr-FR.ts",
       },
       {
-        code: "es-ES",
+        code: "es",
         iso: "es-ES",
         file: "es-ES.ts",
       },
